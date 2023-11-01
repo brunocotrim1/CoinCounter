@@ -66,28 +66,30 @@ print(dfResults)
 csv_file = 'StatResults.csv'
 dfResults.to_csv(csv_file, header=True, index=False)
 
-# # Get the screen width and height
-# screen = screeninfo.get_monitors()[0]  # Assuming the first monitor
-# screen_width = screen.width
+# Get the screen width and height
+screen = screeninfo.get_monitors()[0]  # Assuming the first monitor
+screen_width = screen.width
 
-# # Calculate the figure size with a specified aspect ratio (e.g., 16:9)
-# aspect_ratio = 16 / 9
-# fig_width = (screen_width - 200) / 100 # Inches
-# fig_height = fig_width / aspect_ratio
+# Calculate the figure size with a specified aspect ratio (e.g., 16:9)
+aspect_ratio = 16 / 9
+fig_width = (screen_width - 200) / 100 # Inches
+fig_height = fig_width / aspect_ratio
 
-# # Create a figure with the calculated size
-# fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+# Create a figure with the calculated size
+fig, ax = plt.subplots(figsize=(fig_width, fig_height))
 
 
-# transposed_data = [df['time'] for df in dataframes[1:]]
+transposed_data = [df['time'] for df in dataframes[1:]]
 
-# # Create a boxplot with labels on the Y-axis and values on the X-axis
-# ax.boxplot(transposed_data, vert=False, labels=filepaths[1:], whis=1.5)  # Adjust the value as needed
+# Create a boxplot with labels on the Y-axis and values on the X-axis
+ax.boxplot(transposed_data, vert=False, labels=filepaths[1:], whis=1.5)  # Adjust the value as needed
 
-# ax.set_xlabel('Time(s)')
-# ax.set_ylabel('Algoritmh')
-# ax.set_title('Parallel Algoritmh Analisys')
-# plt.subplots_adjust(left=0.3)
+ax.set_xlabel('Time(s)')
+ax.set_ylabel('Algoritmh')
+ax.set_title('Parallel Algoritmh Analisys')
+plt.subplots_adjust(left=0.3)
+plt.savefig('StatsVisualization.png', dpi=300, bbox_inches='tight')
+plt.show()
 # if len(sys.argv) > 1 and sys.argv[1] == "4":
 #     plt.savefig('boxplot_4C.png', dpi=300, bbox_inches='tight')
 #     # Define the CSV file name

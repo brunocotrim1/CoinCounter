@@ -26,8 +26,7 @@ public class Coin {
 	}
 
 	public static void main(String[] args) {
-		//int[] coins = createRandomCoinSet(34);
-		int[] coins = createRandomCoinSet(35);
+		int[] coins = createRandomCoinSet(34);
 		System.out.println("Number of cores: " + MAX_TASKS);
 		int repeats = 31;
 		for (int i = 0; i < repeats; i++) {

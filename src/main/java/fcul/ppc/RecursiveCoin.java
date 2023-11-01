@@ -30,17 +30,17 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
             return -1;
         }
 
-        if(getQueuedTaskCount() > Coin.MAX_TASKS){
-            int a = seq(coins, index + 1, accumulator);
-            int b = seq(coins, index + 1, accumulator + coins[index]);
-            return Math.max(a, b);
-        }
-
-/*        if ( depth == 10){
+/*        if(getQueuedTaskCount() > Coin.MAX_TASKS){
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
         }*/
+
+        if ( depth == 10){
+            int a = seq(coins, index + 1, accumulator);
+            int b = seq(coins, index + 1, accumulator + coins[index]);
+            return Math.max(a, b);
+        }
 
         // Surplus: if the current queue has more than 2 tasks than the average
 /*        if (RecursiveTask.getSurplusQueuedTaskCount() > 2) {
