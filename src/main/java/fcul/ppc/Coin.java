@@ -11,7 +11,7 @@ public class Coin {
 	private static Map<Integer, Double> resultsSeq = new HashMap<>();
 	private static Map<Integer, Double> resultsPar = new HashMap<>();
 	public static final int LIMIT = 999;
-	public static final int MAX_TASKS = nCores/2;
+	public static final int MAX_TASKS = (nCores/2);
 
 	public static int[] createRandomCoinSet(int N) {
 		int[] r = new int[N];
@@ -26,7 +26,8 @@ public class Coin {
 	}
 
 	public static void main(String[] args) {
-		int[] coins = createRandomCoinSet(34);
+		//int[] coins = createRandomCoinSet(34);
+		int[] coins = createRandomCoinSet(35);
 		System.out.println("Number of cores: " + MAX_TASKS);
 		int repeats = 31;
 		for (int i = 0; i < repeats; i++) {
@@ -47,9 +48,10 @@ public class Coin {
 				System.exit(-1);
 			}*/
 		}
-		String parCsvFileName = "par_depth_maxTasksHalfThreadMinusTwo.csv";
+		String parCsvFileName = "par_surplus2T.csv";
 
 		// Write the data to CSV files
+		//
 		//writeResultsToCSV(parCsvFileName, resultsPar);
 	}
 

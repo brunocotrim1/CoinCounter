@@ -1,7 +1,5 @@
 package fcul.ppc;
 
-import java.util.concurrent.ForkJoinPool;
-import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
 public class RecursiveCoin extends RecursiveTask<Integer> {
@@ -45,7 +43,7 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
         }*/
 
         // Surplus: if the current queue has more than 2 tasks than the average
-/*        if (RecursiveTask.getSurplusQueuedTaskCount() > 3) {
+/*        if (RecursiveTask.getSurplusQueuedTaskCount() > 2) {
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
