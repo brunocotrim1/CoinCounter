@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 from scipy.stats import mannwhitneyu
 import matplotlib.pyplot as plt
-import sys
 import matplotlib.pyplot as plt
 import screeninfo
 def statisticalAnalysis(compTuple1,compTuple2,dfResults):
@@ -75,32 +74,34 @@ aspect_ratio = 16 / 9
 fig_width = (screen_width - 200) / 100 # Inches
 fig_height = fig_width / aspect_ratio
 
+
+
+
 # Create a figure with the calculated size
 fig, ax = plt.subplots(figsize=(fig_width, fig_height))
 
-
 transposed_data = [df['time'] for df in dataframes[1:]]
 
+# Define colors for your boxplot
+boxplot_colors = ['blue', 'green', 'red', 'purple', 'orange', 'pink', 'brown', 'gray', 'cyan', 'magenta']
+
 # Create a boxplot with labels on the Y-axis and values on the X-axis
-ax.boxplot(transposed_data, vert=False, labels=filepaths[1:], whis=1.5)  # Adjust the value as needed
+bp = ax.boxplot(transposed_data, vert=False, labels=filepaths[1:], whis=1.5, patch_artist=True)
 
+# Customize the boxplot elements with colors
+for element, color in zip(bp['boxes'], boxplot_colors):
+    element.set_facecolor(color)
+
+# Set labels and title
 ax.set_xlabel('Time(s)')
-ax.set_ylabel('Algoritmh')
-ax.set_title('Parallel Algoritmh Analisys')
+ax.set_ylabel('Algorithm')
+ax.set_title('Parallel Algorithm Analysis')
+
+# Adjust the appearance as needed
 plt.subplots_adjust(left=0.3)
+
+# Save the plot to an image file
 plt.savefig('StatsVisualization.png', dpi=300, bbox_inches='tight')
+
+# Show the plot
 plt.show()
-# if len(sys.argv) > 1 and sys.argv[1] == "4":
-#     plt.savefig('boxplot_4C.png', dpi=300, bbox_inches='tight')
-#     # Define the CSV file name
-#     csv_file = 'StatResults_4C.csv'
-
-#     # Write the DataFrame to a CSV file
-#     dfResults.to_csv(csv_file, header=True, index=False)
-# else:
-#     plt.savefig('boxplot_8C.png', dpi=300, bbox_inches='tight')
-#     csv_file = 'StatResults_8C.csv'
-#     dfResults.to_csv(csv_file, header=True, index=False)
-
-# # Show the plot
-# #plt.show()

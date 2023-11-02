@@ -1,5 +1,6 @@
 package fcul.ppc;
 
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 
 public class RecursiveCoin extends RecursiveTask<Integer> {
@@ -19,7 +20,6 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        //  System.out.println("Computing " + index + " " + accumulator);
         if (index >= coins.length) {
             if (accumulator < LIMIT) {
                 return accumulator;
@@ -36,12 +36,11 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
             return Math.max(a, b);
         }*/
 
-        if ( depth == 10){
+/*        if ( depth == 10){
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
-        }
-
+        }*/
         // Surplus: if the current queue has more than 2 tasks than the average
 /*        if (RecursiveTask.getSurplusQueuedTaskCount() > 2) {
             int a = seq(coins, index + 1, accumulator);
