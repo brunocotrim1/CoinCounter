@@ -38,8 +38,7 @@ def statisticalAnalysis(compTuple1,compTuple2,dfResults):
        row_series = pd.Series((name1, name2, round(p, 5), stat, False,round(mean_data1, 5),round(std_data1, 5)), index=columns)
     dfResults = pd.concat([dfResults, row_series.to_frame().T], ignore_index=True)
     print('Different distribution (reject H0) ' + name2 + ' has a relevant difference between distributions comparing to ' + name1)
-  print(dfResults)
-  print("\n")
+
   return dfResults  # Return the modified DataFrame
 
 
