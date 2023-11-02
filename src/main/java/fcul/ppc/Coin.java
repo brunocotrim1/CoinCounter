@@ -11,7 +11,6 @@ public class Coin {
 	private static Map<Integer, Double> resultsSeq = new HashMap<>();
 	private static Map<Integer, Double> resultsPar = new HashMap<>();
 	public static final int LIMIT = 999;
-	public static final int MAX_TASKS = (nCores/2);
 
 	public static int[] createRandomCoinSet(int N) {
 		int[] r = new int[N];
@@ -29,11 +28,11 @@ public class Coin {
 		int[] coins = createRandomCoinSet(34);
 		int repeats = 31;
 		for (int i = 0; i < repeats; i++) {
-/*			long seqInitialTime = System.nanoTime();
+			long seqInitialTime = System.nanoTime();
 			int rs = seq(coins, 0, 0);
 			long seqEndTime = System.nanoTime() - seqInitialTime;
 			System.out.println(nCores + ";Sequential;" + (double) seqEndTime / 1E9);
-			resultsPar.put(i, (double) seqEndTime / 1E9);*/
+			resultsPar.put(i, (double) seqEndTime / 1E9);
 
 			long parInitialTime = System.nanoTime();
 			int rp = par(coins, 0, 0);
@@ -41,16 +40,17 @@ public class Coin {
 			System.out.println(nCores + ";Parallel;" + (double) parEndTime / 1E9);
 			resultsPar.put(i, (double) parEndTime / 1E9);
 
-/*			if (rp != rs) {
+			if (rp != rs) {
 				System.out.println("Wrong Result!");
 				System.exit(-1);
-			}*/
+			}
 		}
-		String parCsvFileName = "par_surplus2T.csv";
-
+		String parCsvFileName = "file_name_benchmark.csv";
+		String seqCsvFileName = "file_name_benchmark_seq.csv";
 		// Write the data to CSV files
 		//
 		//writeResultsToCSV(parCsvFileName, resultsPar);
+		//writeResultsToCSV(seqCsvFileName, resultsSeq);
 	}
 
 	private static void writeResultsToCSV(String fileName, Map<Integer, Double> data) {

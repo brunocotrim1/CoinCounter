@@ -11,6 +11,7 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
     private int accumulator;
 
     private int depth;
+
     public RecursiveCoin(int[] coins, int index, int accumulator, int depth) {
         this.coins = coins;
         this.index = index;
@@ -30,19 +31,22 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
             return -1;
         }
 
+        //Best Granularity Control conditions obtained
+
 /*        if(getQueuedTaskCount() > Coin.MAX_TASKS){
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
         }*/
 
-/*        if ( depth == 10){
+        if (depth == 10) { // Best solution obtained
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
-        }*/
-        // Surplus: if the current queue has more than 2 tasks than the average
-/*        if (RecursiveTask.getSurplusQueuedTaskCount() > 2) {
+        }
+        
+
+/*        if (RecursiveTask.getSurplusQueuedTaskCount() > 3) {
             int a = seq(coins, index + 1, accumulator);
             int b = seq(coins, index + 1, accumulator + coins[index]);
             return Math.max(a, b);
@@ -50,8 +54,7 @@ public class RecursiveCoin extends RecursiveTask<Integer> {
 
         RecursiveCoin aTask = new RecursiveCoin(coins, index + 1, accumulator, depth + 1);
         aTask.fork();
-        RecursiveCoin bTask = new RecursiveCoin(coins, index + 1, accumulator + coins[index]
-                , depth + 1);
+        RecursiveCoin bTask = new RecursiveCoin(coins, index + 1, accumulator + coins[index], depth + 1);
         bTask.fork();
         int a = aTask.join();
         int b = bTask.join();
