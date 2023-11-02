@@ -32,8 +32,7 @@ public class Coin {
 			int rs = seq(coins, 0, 0);
 			long seqEndTime = System.nanoTime() - seqInitialTime;
 			System.out.println(nCores + ";Sequential;" + (double) seqEndTime / 1E9);
-			resultsPar.put(i, (double) seqEndTime / 1E9);
-
+			resultsSeq.put(i, (double) seqEndTime / 1E9);
 			long parInitialTime = System.nanoTime();
 			int rp = par(coins, 0, 0);
 			long parEndTime = System.nanoTime() - parInitialTime;
